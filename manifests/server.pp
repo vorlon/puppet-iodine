@@ -1,5 +1,6 @@
 class iodine::server(
   $domain = hiera('iodine_domain'),
+  $server_ip = hiera('iodine_server_ip'),
   $password = trocla("iodine_${::fqdn}",'plain')
 ) {
   case $::operatingsystem {
