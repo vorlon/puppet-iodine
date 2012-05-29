@@ -10,5 +10,8 @@ class iodine::server(
 
   if hiera('use_shorewall',false) {
     include shorewall::rules::dns
+    if hiera('iodine_shorewall_masq',true) {
+      include shorewall::server::shorewall_masq
+    }
   }
 }
