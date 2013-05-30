@@ -6,10 +6,18 @@ class iodine::server(
   $shorewall_masq      = true,
   $shorewall_zone      = 'net',
   $shorewall_interface = 'eth0'
-) {
-  case $::operatingsystem {
-    'debian','ubuntu': { include iodine::server::debian }
-    default: { include iodine::server::base }
+) inherits iodine::params {
+
+  package { 'iodine_server':
+    name   => $iodine::params::server_package,
+    ensure => installed,
+  }
+
+  service { 'iodine_server':
+    name    => $iodine::params::server_service,
+    ensure  => running,
+    enable  => true,
+    require => Package['iodine_server'],
   }
 
   if $manage_shorewall {
