@@ -1,10 +1,10 @@
 class iodine::server(
-  $domain,
-  $server_ip,
-  $password = trocla("iodine_${::fqdn}",'plain'),
-  $manage_shorewall = false,
-  $shorewall_masq = true,
-  $shorewall_zone = 'net',
+  $domain              = $::domain,
+  $server_ip           = $::ipaddress,
+  $password            = trocla("iodine_${::fqdn}",'plain'),
+  $manage_shorewall    = false,
+  $shorewall_masq      = true,
+  $shorewall_zone      = 'net',
   $shorewall_interface = 'eth0'
 ) {
   case $::operatingsystem {
