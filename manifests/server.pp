@@ -1,24 +1,18 @@
 class iodine::server(
   $domain              = $::domain,
   $server_ip           = $::ipaddress,
-  $password            = trocla("iodine_${::fqdn}",'plain'),
+  # Either define the password in the class definition,
+  # Or use hiera transparent lookups
+  $password            = hiera('iodine::password'),
   $manage_shorewall    = false,
   $shorewall_masq      = true,
   $shorewall_zone      = 'net',
   $shorewall_interface = 'eth0'
 ) inherits iodine::params {
 
-  package { 'iodine_server':
-    name   => $iodine::params::server_package,
-    ensure => installed,
-  }
-
-  service { 'iodine_server':
-    name    => $iodine::params::server_service,
-    ensure  => running,
-    enable  => true,
-    require => Package['iodine_server'],
-  }
+  include '::iodine::server::install'
+  include '::iodine::server::config'
+  include '::iodine::server::service'
 
   if $manage_shorewall {
     include shorewall::rules::dns
@@ -29,4 +23,8 @@ class iodine::server(
       }
     }
   }
+  
+  # Order classes properly and notify the service if things change
+  Class['::iodine::server::install'] -> Class['::iodine::server::config'] ~> Class['::iodine::server::service']
+
 }

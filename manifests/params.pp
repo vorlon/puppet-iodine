@@ -1,25 +1,23 @@
 class iodine::params {
- $server_package = $::operatingsystem ? {
-    /RedHat|CentOS/ => 'iodine',
-    /Debian|Ubuntu/ => 'iodine',
-    'OpenWrt'       => 'iodined',
-  }
- 
- $server_service = $::operatingsystem ? {
-    /RedHat|CentOS/ => 'iodine-server',
-    /Debian|Ubuntu/ => 'iodined',
-    'OpenWrt'       => 'iodined',
-  }
- 
- $client_package = $::operatingsystem ? {
-    /RedHat|CentOS/ => 'iodine',
-    /Debian|Ubuntu/ => 'iodine',
-    'OpenWrt'       => 'iodine',
-  }
- 
- $client_service = $::operatingsystem ? {
-    /RedHat|CentOS/ => 'iodine-client',
-    /Debian|Ubuntu/ => undef,
-    'OpenWrt'       => undef,
-  }
+  case $::osfamily {
+
+    'RedHat': {
+      $server_package = 'iodine'
+      $server_service = 'iodine-server'
+      $client_package = 'iodine'
+      $client_service = 'iodine'
+      $server_config_file = '/etc/sysconfig/iodine'
+      $server_template = 'iodine/config_redhat.erb'
+    }
+    'Debian': { 
+      $server_package = 'iodine'
+      $server_service = 'iodine-server'
+      $client_package = 'iodine'
+      $client_service = 'iodine'
+      $server_config_file = '/etc/sysconfig/iodine'
+      $server_template = 'iodine/config_debian.erb'
+    }
+    default: { 
+      fail("I don't know how to manage iodine on $::osfamily")
+    }
 }
