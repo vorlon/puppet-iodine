@@ -1,15 +1,9 @@
 class iodine::server::config inherits iodine::params {
-  file{"$::iodine::params:config_file":
-    content => template('iodine/iodine-server-sysconfig.erb'),
-    owner   => root,
-    group   => 0,
-    mode    => 0600,
-  }
-
-    content => template('iodine/default.erb'),
-    owner   => root,
-    group   => 0,
-    mode    => '0600';
+  file{"$::iodine::params::config_file":
+    content => template($::iodine::params::server_template),
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0600',
   }
 
 }

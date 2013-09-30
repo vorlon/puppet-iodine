@@ -4,6 +4,8 @@ class iodine::server(
   # Either define the password in the class definition,
   # Or use hiera transparent lookups
   $password            = hiera('iodine::password'),
+
+  # For managing shorewall rules
   $manage_shorewall    = false,
   $shorewall_masq      = true,
   $shorewall_zone      = 'net',

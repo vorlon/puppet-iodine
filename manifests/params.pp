@@ -6,7 +6,7 @@ class iodine::params {
       $server_service = 'iodine-server'
       $client_package = 'iodine'
       $client_service = 'iodine'
-      $server_config_file = '/etc/sysconfig/iodine'
+      $config_file = '/etc/sysconfig/iodine'
       $server_template = 'iodine/config_redhat.erb'
     }
     'Debian': { 
@@ -14,10 +14,12 @@ class iodine::params {
       $server_service = 'iodine-server'
       $client_package = 'iodine'
       $client_service = 'iodine'
-      $server_config_file = '/etc/sysconfig/iodine'
+      $config_file = '/etc/sysconfig/iodine'
       $server_template = 'iodine/config_debian.erb'
     }
     default: { 
       fail("I don't know how to manage iodine on $::osfamily")
     }
+
+  }
 }

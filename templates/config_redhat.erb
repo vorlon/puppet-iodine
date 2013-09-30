@@ -1,6 +1,10 @@
-# You may provide password in two way, uncomment next line, or provide it in OPTIONS
-#IODINED_PASS="my_cool_passwd"
+# Template Made by Puppet
+# Do Not Edit By Hand!
+# Default settings for iodine. This file is sourced from
+# /etc/init.d/iodined
+
+IODINED_PASS="<%= scope.lookupvar('iodine::server::password') %>"
 
 # See `man iodine`
 #OPTIONS="-P PASSWORD TUNNEL_IP DOMAIN"
-OPTIONS=""
+OPTIONS="<%= scope.lookupvar('iodine::server::server_ip') %> <%= scope.lookupvar('iodine::server::domain') %>"
