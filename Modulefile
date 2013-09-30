@@ -1,0 +1,8 @@
+name    'KyleAndersion-iodine'
+version '0.0.1'
+source 'git@github.com:solarkennedy/puppet-iodine.git'
+author 'KyleAndersion'
+license 'Apache License, Version 2.0'
+summary 'Puppet module for configuring an iodine (IP over DNS) tunnel. (client or server)'
+description 'Puppet module for configuring an iodine (IP over DNS) tunnel. (client or server)'
+project_page 'https://github.com/solarkennedy/puppet-iodine'
