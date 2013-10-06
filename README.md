@@ -1,7 +1,7 @@
 About
 ------
 [iodine](http://code.kryo.se/iodine/) is an IP over DNS tunnel. This module makes it easy to install and configure them.
-[![Build Status](https://travis-ci.org/[solarkennedy]/[puppet-iodine].png)](https://travis-ci.org/[solarkennedy]/[puppet-iodine])
+[![Build Status](https://travis-ci.org/solarkennedy/puppet-iodine.png)](https://travis-ci.org/solarkennedy/puppet-iodine)
 
 
 Installation
@@ -15,6 +15,7 @@ Examples
 class { '::iodine::server': password => 'test_password' }
 ```
 ### More Advanced
+
 ```puppet
 class { '::iodine::server': domain => 'dns.xkyle.com', serverip => '192.168.0.1' }
 ```
