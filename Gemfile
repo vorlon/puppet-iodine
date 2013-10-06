@@ -23,4 +23,8 @@ else
   gem 'puppet', :require => false
 end
 
+if puppetversion = '2.7.0'
+  gem 'hiera-puppet', :require => false
+end
+
 # vim:ft=ruby
