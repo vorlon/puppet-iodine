@@ -77,4 +77,3 @@ DEPENDENCIES
   rspec-system
   rspec-system-puppet
   rspec-system-serverspec
-  serverspec
