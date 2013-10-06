@@ -8,6 +8,13 @@ Installation
 ------------
     puppet module install KyleAnderson/iodine
 
+Requirements 
+-----------
+If you are using Puppet 2.7, you must have hiera. (Which is built into puppet 3)
+
+This module will use hiera to pull the password if available. If you are concerned about puting
+plain text passwords in your puppet manifests, consider using [Hiera-gpg](http://www.craigdunn.org/2011/10/secret-variables-in-puppet-with-hiera-and-gpg/)
+
 Examples
 -------
 
