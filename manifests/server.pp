@@ -1,6 +1,7 @@
 class iodine::server(
   $domain,
   $server_ip,
+  $listen_ip = '0.0.0.0',
   $password = trocla("iodine_${::fqdn}",'plain'),
   $manage_shorewall = false,
   $shorewall_masq = true,
