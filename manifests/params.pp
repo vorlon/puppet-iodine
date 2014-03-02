@@ -11,10 +11,10 @@ class iodine::params {
     }
     'Debian': { 
       $server_package = 'iodine'
-      $server_service = 'iodine-server'
+      $server_service = 'iodined'
       $client_package = 'iodine'
       $client_service = 'iodine'
-      $config_file = '/etc/sysconfig/iodine'
+      $config_file = '/etc/default/iodine'
       $server_template = 'iodine/config_debian.erb'
     }
     default: { 
