@@ -1,7 +1,9 @@
+# == Class: iodine::server::service
+#
 class iodine::server::service {
   service { 'iodine_server':
-    name    => $iodine::params::server_service,
     ensure  => running,
+    name    => $iodine::params::server_service,
     enable  => true,
   }
 }

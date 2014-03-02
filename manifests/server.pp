@@ -1,3 +1,7 @@
+# == Class: iodine::server
+#
+# Installs/configures/runs the iodine server portion
+#
 class iodine::server(
   # Either define the password in the class definition,
   # Or use hiera transparent lookups
@@ -20,12 +24,12 @@ class iodine::server(
     include shorewall::rules::dns
     if $shorewall_masq {
       class{'iodine::server::shorewall_masq':
-        zone => $shorewall_zone,
+        zone      => $shorewall_zone,
         interface => $shorewall_interface
       }
     }
   }
-  
+
   # Order classes properly and notify the service if things change
   Class['::iodine::server::install'] -> Class['::iodine::server::config'] ~> Class['::iodine::server::service']
 
