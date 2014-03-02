@@ -1,10 +1,9 @@
 class iodine::server(
-  $domain              = $::domain,
-  $server_ip           = $::ipaddress,
   # Either define the password in the class definition,
   # Or use hiera transparent lookups
-  $password            = hiera('iodine::password'),
-
+  $password,
+  $domain              = $::domain,
+  $server_ip           = $::ipaddress,
   # For managing shorewall rules
   $manage_shorewall    = false,
   $shorewall_masq      = true,
