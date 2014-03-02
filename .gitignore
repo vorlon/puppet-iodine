@@ -1,6 +1,5 @@
-pkg/
-metadata.json
-Gemfile.lock
-.rspec_system/
-.*.sw*
-
+.*.sw?
+pkg
+spec/fixtures
+.rspec_system
+.vagrant
