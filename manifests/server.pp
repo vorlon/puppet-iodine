@@ -8,6 +8,7 @@ class iodine::server(
   $manage_shorewall    = false,
   $shorewall_masq      = true,
   $shorewall_zone      = 'net',
+  $listen_ip           = '0.0.0.0',
   $shorewall_interface = 'eth0'
 ) inherits iodine::params {
 

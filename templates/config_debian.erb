@@ -3,5 +3,5 @@
 # Default settings for iodine. This file is sourced from
 # /etc/init.d/iodined
 START_IODINED="true"
-IODINED_ARGS="-c <%= scope.lookupvar('iodine::server::server_ip') %> <%= scope.lookupvar('iodine::server::domain') %>"
+IODINED_ARGS="-l <%= scope.lookupvar("iodine::server::listen_ip") %> -c <%= scope.lookupvar("iodine::server::server_ip") %> <%= scope.lookupvar("iodine::server::domain") %>"
 IODINED_PASSWORD="<%= scope.lookupvar('iodine::server::password') %>"
